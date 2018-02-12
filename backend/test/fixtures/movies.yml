@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  allocine_id: 1
+  title: MyString
+  runtime: MyString
+  plot: MyString
+  actors: MyString
+  directors: MyString
+
+two:
+  allocine_id: 1
+  title: MyString
+  runtime: MyString
+  plot: MyString
+  actors: MyString
+  directors: MyString
