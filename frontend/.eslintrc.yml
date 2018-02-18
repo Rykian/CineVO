@@ -1,0 +1,19 @@
+extends: airbnb
+env:
+  browser: true
+  node: true
+  mocha: true
+  es6: true
+
+parserOptions:
+  ecmaFeatures:
+    modules: true
+    jsx: true
+
+settings:
+  react:
+    pragma: h
+
+rules:
+  semi: ['error', 'never']
+  'import/prefer-default-export': off
