@@ -2,14 +2,14 @@ import { resolve } from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import webpack from 'webpack'
 
-export default {
-  mode: 'development',
+const base = {
+  mode: 'production',
   plugins: [
     new HtmlWebpackPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
   ],
 
-  entry: ['webpack-hot-middleware/client', 'index.js'],
+  entry: ['index.js'],
+
   resolve: {
     modules: [
       'node_modules',
@@ -28,3 +28,23 @@ export default {
     ],
   },
 }
+
+const development = {
+  ...base,
+  mode: 'development',
+  plugins: [
+    ...base.plugins,
+    new webpack.HotModuleReplacementPlugin(),
+  ],
+
+  entry: [
+    'webpack-hot-middleware/client',
+    ...base.entry,
+  ],
+}
+
+export default (() => {
+  if (process.argv.includes('--mode=production')) return base
+
+  return development
+})()
