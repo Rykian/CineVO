@@ -1,4 +1,10 @@
-extends: airbnb
+plugins:
+  - flowtype
+
+extends:
+  - airbnb
+  - plugin:flowtype/recommended
+
 env:
   browser: true
   node: true

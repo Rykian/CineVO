@@ -1,6 +1,7 @@
 {
-  "presets": [ "env", "stage-0" ],
+  "presets": [ "flow", "env", "stage-0" ],
   "plugins": [
+    "relay",
     ["transform-react-jsx", {
       "pragma": "h"
     }]

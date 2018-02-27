@@ -6,29 +6,38 @@
   "scripts": {
     "test": "jest",
     "start": "babel-node src/server.js",
-    "build": "webpack --mode=production"
+    "build": "webpack --mode=production",
+    "relay": "relay-compiler --src ./src --schema ../backend/app/javascript/packs/schema.json --extensions js jsx"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "preact": "^8.2.7",
+    "preact-compat": "^3.18.0",
     "preact-redux": "^2.0.3",
-    "redux": "^3.7.2"
+    "react-relay": "^1.5.0",
+    "redux": "^3.7.2",
+    "relay-runtime": "^1.5.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-plugin-relay": "^1.5.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
     "babel-preset-stage-0": "^6.24.1",
     "eslint": "^4.18.0",
     "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-flowtype": "^2.46.1",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.6.1",
     "html-webpack-plugin": "webpack-contrib/html-webpack-plugin",
     "node": "9",
     "polka": "^0.3.4",
+    "relay-compiler": "^1.5.0",
+    "relay-compiler-webpack-plugin": "^0.8.0",
     "tapable": "1.0.0-beta.5",
     "webpack": "^4.0.0-beta.2",
     "webpack-cli": "^2.0.6",

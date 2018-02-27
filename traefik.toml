@@ -1,0 +1,28 @@
+
+[web]
+address = ":8080"
+
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+watch = true
+exposedbydefault = false
+
+[entryPoints]
+  [entryPoints.http]
+    address = ":80"
+    # whitelistSourceRange = ["10.42.0.0/16", "152.89.1.33/32", "afed:be44::/16"]
+    compress = true
+
+[file]
+
+[backends]
+  [backends.website]
+    [backends.website.servers.website]
+    url = "http://docker.for.mac.localhost:4000"
+
+[frontends]
+  [frontends.website]
+  entryPoints=["http"]
+  backend = "website"
+  [frontends.website.routes.website]
+  rule = "PathPrefix: /"

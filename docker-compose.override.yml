@@ -5,3 +5,16 @@ services:
     volumes: ['./backend:/app']
     ports: ['3000:3000']
     command: bash -c 'bundle install && rails s'
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=PathPrefix: /graphql"
+      - "traefik.port=3000"
+      - "traefik.frontend.entryPoints=https,http"
+
+  traefik:
+    image: traefik
+    ports: ['8080:8080', '80:80']
+    command: --debug
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik.toml:/etc/traefik/traefik.toml
