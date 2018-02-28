@@ -19,7 +19,10 @@ parserOptions:
 settings:
   react:
     pragma: h
+  import/resolver: webpack
 
 rules:
   semi: ['error', 'never']
   'import/prefer-default-export': off
+  'react/prop-types': off
+  'react/no-unused-prop-types': off

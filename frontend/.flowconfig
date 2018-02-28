@@ -3,6 +3,7 @@
 [include]
 
 [libs]
+./preact.flow
 
 [lints]
 

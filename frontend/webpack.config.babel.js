@@ -1,17 +1,11 @@
 import { resolve } from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-// import RelayCompilerWebpackPlugin from 'relay-compiler-webpack-plugin'
 import webpack from 'webpack'
+// import resolvers from './webpack.resolve'
 
 const base = {
   mode: 'production',
-  plugins: [
-    new HtmlWebpackPlugin(),
-    /* new RelayCompilerWebpackPlugin({
-      schema: resolve(__dirname, '../backend/app/javascript/packs/schema.json'),
-      src: resolve(__dirname, './src'),
-    }), */
-  ],
+  plugins: [new HtmlWebpackPlugin()],
 
   entry: ['index.js'],
 
@@ -22,10 +16,7 @@ const base = {
       // Not necessary unless you consume a module using `createClass`
       // 'create-react-class': 'preact-compat/lib/create-react-class',
     },
-    modules: [
-      'node_modules',
-      resolve(__dirname, 'src'),
-    ],
+    modules: ['node_modules', resolve(__dirname, 'src')],
     extensions: ['.js', '.json', '.jsx', '.css'],
   },
 
@@ -43,15 +34,9 @@ const base = {
 const development = {
   ...base,
   mode: 'development',
-  plugins: [
-    ...base.plugins,
-    new webpack.HotModuleReplacementPlugin(),
-  ],
+  plugins: [...base.plugins, new webpack.HotModuleReplacementPlugin()],
 
-  entry: [
-    'webpack-hot-middleware/client',
-    ...base.entry,
-  ],
+  entry: ['webpack-hot-middleware/client', ...base.entry],
 
   devtool: 'eval-source-map',
 }
