@@ -18,6 +18,5 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.uploaddir.frontend.rule=PathPrefixStrip:/uploads"
-      - "traefik.admin.frontend.rule=PathPrefix:/minio"
       - "traefik.port=9000"
       - "traefik.frontend.entryPoints=https,http"
