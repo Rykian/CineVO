@@ -4,6 +4,7 @@ services:
   rails:
     volumes: ['./backend:/app']
     ports: ['3000:3000']
+    env_file: .env
     command: bash -c 'bundle install && rails s'
 
   traefik:
@@ -16,8 +17,6 @@ services:
 
   minio:
     ports: ['9000:9000']
-    environment:
-      MINIO_ACCESS_KEY: VFWURDFRT6EFJDSHVVQ2
-      MINIO_SECRET_KEY: 9q3ySOQ9V7E+47Q5iNmUn50yzXOFlIGyPa25JUt3
+    env_file: .env
     labels:
       - "traefik.admin.frontend.rule=PathPrefix:/minio"

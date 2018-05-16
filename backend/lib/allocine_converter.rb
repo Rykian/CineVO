@@ -28,7 +28,7 @@ class AllocineConverter
       id: amovie.id,
       title: amovie.title,
       runtime: amovie.length,
-      # poster: URI.parse(amovie.poster),
+      remote_poster_url: amovie.poster,
       plot: ActionView::Base.full_sanitizer.sanitize(amovie.plot(false)),
       actors: amovie.actors_name,
       directors: amovie.directors_name
