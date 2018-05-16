@@ -3,7 +3,7 @@ import { h } from 'preact'
 import { format } from 'date-fns'
 import frLocale from 'date-fns/locale/fr'
 import { Card, Image, Icon } from 'semantic-ui-react'
-import type { appQueryResponse } from '../../__generated__/appQuery.graphql'
+import type { appQueryResponse } from '../__generated__/appQuery.graphql'
 
 type Movies = $PropertyType<appQueryResponse, 'movies'>
 type MovieProps = {

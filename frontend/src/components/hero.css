@@ -1,0 +1,13 @@
+:local(.root) {
+
+}
+
+:local(.form) {
+  display: flex;
+  align-content: space-around;
+  justify-content: center;
+}
+
+:local(.form) .field + .field {
+  margin-left: 10px;
+}
