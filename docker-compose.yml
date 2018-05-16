@@ -3,6 +3,21 @@ version: '3.2'
 services:
   rails:
     build: ./backend
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=PathPrefix: /graphql"
+      - "traefik.port=3000"
+      - "traefik.frontend.entryPoints=https,http"
 
   postgres:
     image: postgres:10
+
+  minio:
+    image: minio/minio
+    command: server /data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.uploaddir.frontend.rule=PathPrefixStrip:/uploads"
+      - "traefik.admin.frontend.rule=PathPrefix:/minio"
+      - "traefik.port=9000"
+      - "traefik.frontend.entryPoints=https,http"

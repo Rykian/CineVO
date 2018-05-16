@@ -5,11 +5,6 @@ services:
     volumes: ['./backend:/app']
     ports: ['3000:3000']
     command: bash -c 'bundle install && rails s'
-    labels:
-      - "traefik.enable=true"
-      - "traefik.frontend.rule=PathPrefix: /graphql"
-      - "traefik.port=3000"
-      - "traefik.frontend.entryPoints=https,http"
 
   traefik:
     image: traefik
@@ -18,3 +13,11 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.toml:/etc/traefik/traefik.toml
+
+  minio:
+    ports: ['9000:9000']
+    environment:
+      MINIO_ACCESS_KEY: VFWURDFRT6EFJDSHVVQ2
+      MINIO_SECRET_KEY: 9q3ySOQ9V7E+47Q5iNmUn50yzXOFlIGyPa25JUt3
+    labels:
+      - "traefik.admin.frontend.rule=PathPrefix:/minio"
