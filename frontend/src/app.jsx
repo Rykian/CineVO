@@ -25,6 +25,8 @@ query appQuery {
     screenings {
       date
     }
+    user_ratings
+    press_ratings
   }
 }
 `

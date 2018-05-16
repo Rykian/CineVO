@@ -31,7 +31,9 @@ class AllocineConverter
       remote_poster_url: amovie.poster,
       plot: ActionView::Base.full_sanitizer.sanitize(amovie.plot(false)),
       actors: amovie.actors_name,
-      directors: amovie.directors_name
+      directors: amovie.directors_name,
+      press_ratings: movie['statistics']['pressRating'],
+      user_ratings: movie['statistics']['userRating'],
     )
   end
 end

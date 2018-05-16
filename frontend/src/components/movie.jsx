@@ -2,7 +2,7 @@
 import { h } from 'preact'
 import { format } from 'date-fns'
 import frLocale from 'date-fns/locale/fr'
-import { Card, Image, Icon } from 'semantic-ui-react'
+import { Card, Image, Icon, Rating } from 'semantic-ui-react'
 import type { appQueryResponse } from '../__generated__/appQuery.graphql'
 
 type Movies = $PropertyType<appQueryResponse, 'movies'>
@@ -61,7 +61,7 @@ export const Movie = ({ movie }: MovieProps) => (
         <Icon name="clock" /> {movie.runtime} minutes
         {' • '}
         <span title="Réalisateur(s)">
-          <Icon name="user" /> {movie.directors.join(', ')}
+          <Icon name="video" /> {movie.directors.join(', ')}
         </span>
         {' • '}
         <span title="Acteur(s)">
@@ -70,6 +70,20 @@ export const Movie = ({ movie }: MovieProps) => (
       </Card.Meta>
       <Card.Description>
         <Image floated="left" rounded size="small" src={movie.poster.thumb} />
+        <p>
+          Presse :{' '}
+          <Rating
+            icon="star"
+            maxRating="5"
+            defaultRating={movie.press_ratings}
+          />
+          {' '}• Spectateurs :{' '}
+          <Rating
+            icon="star"
+            maxRating="5"
+            defaultRating={movie.user_ratings}
+          />
+        </p>
         <p>{movie.plot}</p>
       </Card.Description>
     </Card.Content>
