@@ -2,36 +2,81 @@
 import { h } from 'preact'
 import { format } from 'date-fns'
 import frLocale from 'date-fns/locale/fr'
-import { Card } from 'semantic-ui-react'
+import { Card, Image, Icon } from 'semantic-ui-react'
 import type { appQueryResponse } from '../../__generated__/appQuery.graphql'
 
 type Movies = $PropertyType<appQueryResponse, 'movies'>
-type Props = {
-  movie: $ElementType<Movies, number>
+type MovieProps = {
+  movie: $ElementType<Movies, number>,
 }
 
-export const Movie = ({ movie }: Props) => (
+type ScreeningsProps = {
+  screenings: $PropertyType<$PropertyType<MovieProps, 'movie'>, 'screenings'>,
+}
+
+const Screenings = ({ screenings }: ScreeningsProps) => {
+  if (!screenings) return null
+
+  const byDays = screenings.reduce((acc, curr) => {
+    const day = format(curr.date, 'YYYY-MM-DD')
+    acc[day] = acc[day] || []
+    acc[day].push(curr.date)
+
+    return acc
+  }, {})
+
+  const days = Object.keys(byDays)
+
+  return (
+    <table>
+      <thead>
+        <tr>
+          {days.map(d => (
+            <th>{format(d, 'ddd D MMM', { locale: frLocale })}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody style={{ textAlign: 'center' }}>
+        <tr>
+          {days.map(d => (
+            <td>
+              <div className="ui list">
+                {byDays[d].map(hours => (
+                  <div className="item center">{format(hours, 'HH:MM')}</div>
+                ))}
+              </div>
+            </td>
+          ))}
+        </tr>
+      </tbody>
+    </table>
+  )
+}
+
+export const Movie = ({ movie }: MovieProps) => (
   <Card>
     <Card.Content>
       <Card.Header>{movie.title}</Card.Header>
       <Card.Meta>
-        Durée : {movie.runtime} minutes
+        <Icon name="clock" /> {movie.runtime} minutes
+        {' • '}
+        <span title="Réalisateur(s)">
+          <Icon name="user" /> {movie.directors.join(', ')}
+        </span>
+        {' • '}
+        <span title="Acteur(s)">
+          <Icon name="users" /> {movie.actors.join(', ')}
+        </span>
       </Card.Meta>
       <Card.Description>
-        <p>De {movie.directors.join(', ')}</p>
-        <p>Avec {movie.actors.join(', ')}</p>
-
-        <blockquote>{movie.plot}</blockquote>
+        <Image floated="left" rounded size="small" src={movie.poster.thumb} />
+        <p>{movie.plot}</p>
       </Card.Description>
     </Card.Content>
-    {!!movie.screenings &&
+    {!!movie.screenings && (
       <Card.Content extra>
-        <ul>
-          {movie.screenings.map(screening => (
-            <li>{format(screening.date, 'ddd D MMMM, HH:MM', { locale: frLocale })}</li>
-          ))}
-        </ul>
+        <Screenings screenings={movie.screenings} />
       </Card.Content>
-    }
+    )}
   </Card>
 )
