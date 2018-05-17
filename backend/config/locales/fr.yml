@@ -203,6 +203,7 @@ fr:
       default: "%d %B %Y %Hh %Mmin %Ss"
       long: "%A %d %B %Y %Hh%M"
       short: "%d %b %Hh%M"
+      just_hours: "%Hh%M"
     pm: pm
 
   default_mailer:
