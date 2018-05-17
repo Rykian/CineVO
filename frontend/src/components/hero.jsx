@@ -33,7 +33,7 @@ export class Hero extends Component<{}, State> {
       variables: { email: this.state.email },
       onCompleted: (response, error) => {
         if (error) console.log(error)
-        this.setState({ inProgress: false, success: response.subscribe })
+        this.setState({ inProgress: false, success: response.subscribe, email: '' })
       },
     })
   }
@@ -56,6 +56,7 @@ export class Hero extends Component<{}, State> {
           type="email"
           placeholder="Adresse email"
           onInput={this.updateEmail}
+          value={this.state.email}
           error={this.state.success === false}
         />
         <Form.Button primary disabled={this.state.inProgress}>
