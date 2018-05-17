@@ -1,5 +1,5 @@
 // @flow
-import { h } from 'preact'
+import React from 'react'
 import { graphql, QueryRenderer } from 'react-relay'
 import 'semantic-ui-css/semantic.min.css'
 import { Container, Segment, Card } from 'semantic-ui-react'

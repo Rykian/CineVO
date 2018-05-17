@@ -1,5 +1,5 @@
 // @flow
-import { h } from 'preact'
+import React from 'react'
 import { format } from 'date-fns'
 import frLocale from 'date-fns/locale/fr'
 import { Card, Image, Icon, Rating } from 'semantic-ui-react'

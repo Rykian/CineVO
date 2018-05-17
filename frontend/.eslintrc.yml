@@ -17,8 +17,6 @@ parserOptions:
     jsx: true
 
 settings:
-  react:
-    pragma: h
   import/resolver: webpack
 
 rules:

@@ -1,4 +1,4 @@
-import { render } from 'preact'
+import { render } from 'react-dom'
 
 let root
 function init() {
@@ -7,7 +7,7 @@ function init() {
 }
 
 if (module.hot) {
-  require('preact/devtools') // eslint-disable-line global-require
+  // require('preact/devtools') // eslint-disable-line global-require
   module.hot.accept('./app', () => requestAnimationFrame(init))
 }
 

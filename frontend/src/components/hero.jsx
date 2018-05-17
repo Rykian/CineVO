@@ -1,5 +1,5 @@
 // @flow
-import { h, Component } from 'preact'
+import React from 'react'
 import { graphql, commitMutation } from 'react-relay'
 import { Segment, Header, Form, Message } from 'semantic-ui-react'
 import classnames from 'classnames'
@@ -14,7 +14,7 @@ const mutation = graphql`
   }
 `
 
-export class Hero extends Component<{}, State> {
+export class Hero extends React.Component<{}, State> {
   constructor() {
     super()
     this.state = { email: '', inProgress: false, success: null }
