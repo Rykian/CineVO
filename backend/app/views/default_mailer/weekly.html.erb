@@ -1,0 +1,18 @@
+<h1>CineVO</h1>
+
+<p><%=t '.intro' %></p>
+<% @movies.each do |movie| %>
+  <div>
+    <h2><%= movie.title %></h2>
+    <%= image_tag movie.poster.url(:thumb) %>
+    <p>
+      <%=t '.by', directors: movie.directors.to_sentence %><br />
+      <%=t '.actors', actors: movie.actors.to_sentence %><br />
+    </p>
+    <p><strong><%=t '.plot' %></strong> <%= movie.plot %></p>
+    <p><strong><%=t '.sessions' %></strong> <%= movie.screenings.pluck(:date).map {|d| l d, format: :long}.to_sentence %></p>
+    <%= link_to t('.see_on_allocine'), "http://www.allocine.fr/film/fichefilm_gen_cfilm=#{movie.id}.html" %>
+  </div>
+<% end %>
+
+<p style="font-size: 10px; text-align: center;"><%= link_to t('.unsubscribe'), @unsubscribe_url %></p>

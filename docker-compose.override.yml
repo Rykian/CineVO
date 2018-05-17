@@ -6,6 +6,8 @@ services:
     ports: ['3000:3000']
     env_file: .env
     command: bash -c 'bundle install && rails s'
+    environment:
+      RAILS_ENV: development
 
   traefik:
     image: traefik

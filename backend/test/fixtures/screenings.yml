@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  movie: one
-  date: 2018-02-12 20:29:26
-
-two:
-  movie: two
-  date: 2018-02-12 20:29:26
