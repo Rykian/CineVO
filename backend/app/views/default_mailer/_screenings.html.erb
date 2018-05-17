@@ -1,0 +1,20 @@
+<table>
+  <thead>
+    <tr>
+      <% screenings.keys.each do |day| %>
+        <th><%= l day, format: :long %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <tr align="center">
+      <% screenings.values.each do |times| %>
+        <td>
+          <% times.each do |time| %>
+            <div><%= l time, format: :just_hours %></div>
+          <% end %>
+        </td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>

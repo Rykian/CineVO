@@ -11,27 +11,11 @@
     </p>
     <p><strong><%=t '.plot' %></strong> <%= movie.plot %></p>
     <p><strong><%=t '.sessions' %></strong></p>
-    <% screenings = movie.screenings.map(&:date).group_by(&:to_date) %>
-    <table>
-      <thead>
-        <tr>
-          <% screenings.keys.each do |day| %>
-            <th><%= l day, format: :long %></th>
-          <% end %>
-        </tr>
-      </thead>
-      <tbody>
-        <tr align="center">
-          <% screenings.values.each do |times| %>
-            <td>
-              <% times.each do |time| %>
-                <div><%= l time, format: :just_hours %></div>
-              <% end %>
-            </td>
-          <% end %>
-        </tr>
-      </tbody>
-    </table>
+
+    <%= render partial: 'default_mailer/screenings', locals: {
+      screenings: movie.screenings.map(&:date).group_by(&:to_date)
+    } %>
+
     <%= link_to t('.see_on_allocine'), "http://www.allocine.fr/film/fichefilm_gen_cfilm=#{movie.id}.html" %>
   </div>
 <% end %>
