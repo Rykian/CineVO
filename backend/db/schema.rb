@@ -14,6 +14,8 @@ ActiveRecord::Schema.define(version: 20180516210742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
+  enable_extension "pgcrypto"
 
   create_table "movies", force: :cascade do |t|
     t.string "title", null: false
@@ -36,7 +38,7 @@ ActiveRecord::Schema.define(version: 20180516210742) do
     t.index ["movie_id"], name: "index_screenings_on_movie_id"
   end
 
-  create_table "subscribers", force: :cascade do |t|
+  create_table "subscribers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

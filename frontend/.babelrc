@@ -2,6 +2,7 @@
   "presets": [ "flow", "env", "stage-0" ],
   "plugins": [
     "relay",
-    "transform-react-jsx"
+    "transform-react-jsx",
+    "react-hot-loader/babel"
   ]
 }

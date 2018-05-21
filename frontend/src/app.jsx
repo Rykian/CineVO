@@ -1,5 +1,6 @@
 // @flow
 import React from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { graphql, QueryRenderer } from 'react-relay'
 import 'semantic-ui-css/semantic.min.css'
 import { Container, Segment, Card } from 'semantic-ui-react'
@@ -7,6 +8,7 @@ import environment from './graphql'
 import type { appQueryResponse } from './__generated__/appQuery.graphql'
 import { Movie } from './components/movie'
 import { Hero } from './components/hero'
+import Unsubscribe from './components/unsubscribe'
 
 type Render = { error: ?Error, props: ?appQueryResponse }
 
@@ -46,15 +48,20 @@ const MovieList = ({ error, props }: Render) => {
 }
 
 export const App = () => (
-  <Container>
-    <Hero />
-    <Segment className="basic">
-      <QueryRenderer
-        environment={environment}
-        query={movieListQuery}
-        variables={{}}
-        render={MovieList}
-      />
-    </Segment>
-  </Container>
+  <Router>
+    <React.Fragment>
+      <Route exact path="/unsubscribe/:id" component={Unsubscribe} />
+      <Container>
+        <Hero />
+        <Segment className="basic">
+          <QueryRenderer
+            environment={environment}
+            query={movieListQuery}
+            variables={{}}
+            render={MovieList}
+          />
+        </Segment>
+      </Container>
+    </React.Fragment>
+  </Router>
 )

@@ -1,6 +1,8 @@
 class CreateSubscribers < ActiveRecord::Migration[5.1]
   def change
-    create_table :subscribers do |t|
+    enable_extension 'uuid-ossp'
+    enable_extension 'pgcrypto'
+    create_table :subscribers, id: :uuid do |t|
       t.string :email, index: { unique: true }
 
       t.timestamps

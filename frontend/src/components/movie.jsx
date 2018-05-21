@@ -32,17 +32,17 @@ const Screenings = ({ screenings }: ScreeningsProps) => {
       <thead>
         <tr>
           {days.map(d => (
-            <th>{format(d, 'ddd D MMM', { locale: frLocale })}</th>
+            <th key={d}>{format(d, 'ddd D MMM', { locale: frLocale })}</th>
           ))}
         </tr>
       </thead>
       <tbody style={{ textAlign: 'center' }}>
         <tr>
           {days.map(d => (
-            <td>
+            <td key={d}>
               <div className="ui list">
                 {byDays[d].map(hours => (
-                  <div className="item center">{format(hours, 'HH:MM')}</div>
+                  <div key={hours} className="item center">{format(hours, 'HH:MM')}</div>
                 ))}
               </div>
             </td>
@@ -70,7 +70,7 @@ export const Movie = ({ movie }: MovieProps) => (
       </Card.Meta>
       <Card.Description>
         <Image floated="left" rounded size="small" src={movie.poster.thumb} />
-        <p>
+        <div>
           Presse :{' '}
           <Rating
             icon="star"
@@ -83,7 +83,7 @@ export const Movie = ({ movie }: MovieProps) => (
             maxRating="5"
             defaultRating={movie.user_ratings}
           />
-        </p>
+        </div>
         <p>{movie.plot}</p>
       </Card.Description>
     </Card.Content>

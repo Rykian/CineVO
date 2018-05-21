@@ -8,7 +8,7 @@ class DefaultMailer < ApplicationMailer
     subject = default_i18n_subject(begin: l(week.begin, format: :long),
                                    end: l(week.end, format: :long))
 
-    @unsubscribe_url = "http://localhost/unsubscribe/#{subscriber.email}"
+    @unsubscribe_url = "http://localhost/unsubscribe/#{subscriber.id}"
     headers['List-Unsubscribe'] = @unsubscribe_url
     mail(to: subscriber.email, subject: subject)
   end

@@ -5,7 +5,7 @@
   "main": "webpack.config.babel.js",
   "scripts": {
     "test": "jest",
-    "start": "babel-node src/server.js",
+    "start": "babel-node dev-server.js",
     "build": "webpack --mode=production",
     "relay": "relay-compiler --src ./src --schema ../backend/schema.graphql --extensions js jsx"
   },
@@ -18,10 +18,12 @@
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-relay": "^1.5.0",
+    "react-router-dom": "^4.2.2",
     "redux": "^4.0.0",
     "relay-runtime": "^1.5.0",
     "semantic-ui-css": "^2.3.1",
-    "semantic-ui-react": "^0.80.0"
+    "semantic-ui-react": "^0.80.0",
+    "webpack-serve": "^1.0.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -31,6 +33,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-stage-0": "^6.24.1",
+    "connect-history-api-fallback": "^1.5.0",
     "css-loader": "^0.28.11",
     "eslint": "^4.18.0",
     "eslint-config-airbnb": "^16.1.0",
@@ -42,8 +45,10 @@
     "file-loader": "^1.1.11",
     "flow-bin": "^0.72.0",
     "html-webpack-plugin": "^3.2.0",
+    "koa-connect": "^2.0.1",
     "node": "10.0.0",
     "polka": "^0.4.0",
+    "react-hot-loader": "^4.2.0",
     "relay-compiler": "^1.5.0",
     "relay-compiler-webpack-plugin": "^0.11.0",
     "style-loader": "^0.21.0",

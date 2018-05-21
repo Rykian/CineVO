@@ -9,7 +9,7 @@ import $ from './hero.css'
 type State = { email: string, inProgress: boolean, success: ?boolean }
 
 const mutation = graphql`
-  mutation heroSubscription($email: String!) {
+  mutation heroMutation($email: String!) {
     subscribe(email: $email)
   }
 `

@@ -1,9 +1,9 @@
+import React from 'react'
 import { render } from 'react-dom'
 
-let root
 function init() {
   const { App } = require('./app') // eslint-disable-line global-require
-  root = render(App(), document.body, root)
+  render(<App />, document.body) // eslint-disable-line react/jsx-filename-extension
 }
 
 if (module.hot) {

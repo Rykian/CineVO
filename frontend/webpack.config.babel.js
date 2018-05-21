@@ -6,6 +6,7 @@ import webpack from 'webpack'
 const base = {
   mode: 'production',
   plugins: [new HtmlWebpackPlugin()],
+  output: { publicPath: '/' },
 
   entry: ['index.js'],
 
@@ -39,10 +40,6 @@ const base = {
 const development = {
   ...base,
   mode: 'development',
-  plugins: [...base.plugins, new webpack.HotModuleReplacementPlugin()],
-
-  entry: ['webpack-hot-middleware/client', ...base.entry],
-
   devtool: 'eval-source-map',
 }
 
