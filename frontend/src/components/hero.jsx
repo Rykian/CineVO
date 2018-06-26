@@ -33,7 +33,11 @@ export class Hero extends React.Component<{}, State> {
       variables: { email: this.state.email },
       onCompleted: (response, error) => {
         if (error) console.log(error)
-        this.setState({ inProgress: false, success: response.subscribe, email: '' })
+        this.setState({
+          inProgress: false,
+          success: response.subscribe,
+          email: '',
+        })
       },
     })
   }
@@ -46,11 +50,15 @@ export class Hero extends React.Component<{}, State> {
     >
       <Header as="h1">CineVO</Header>
       <p>
-        Pour être tenu au courant des prochains films en VO par email, inscrivez
-        vous ici
+        Pour être tenu au courant des prochains films en VO par email au
+        Cinéville de Laval, inscrivez vous ici
       </p>
 
-      <Form className={$.form} onSubmit={this.submit} error={this.state.success === false}>
+      <Form
+        className={$.form}
+        onSubmit={this.submit}
+        error={this.state.success === false}
+      >
         <Form.Input
           inline
           type="email"
