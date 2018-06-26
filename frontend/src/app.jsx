@@ -13,24 +13,24 @@ import Unsubscribe from './components/unsubscribe'
 type Render = { error: ?Error, props: ?appQueryResponse }
 
 const movieListQuery = graphql`
-query appQuery {
-  movies {
-    id
-    title
-    plot
-    runtime
-    actors
-    directors
-    poster {
-      thumb
+  query appQuery {
+    movies {
+      id
+      title
+      plot
+      runtime
+      actors
+      directors
+      poster {
+        thumb
+      }
+      screenings {
+        date
+      }
+      user_ratings
+      press_ratings
     }
-    screenings {
-      date
-    }
-    user_ratings
-    press_ratings
   }
-}
 `
 
 const MovieList = ({ error, props }: Render) => {
@@ -40,9 +40,13 @@ const MovieList = ({ error, props }: Render) => {
   return (
     <div>
       <h1>Liste des films</h1>
-      <Card.Group itemsPerRow={2}>
-        {props.movies.map(movie => <Movie key={movie.id} movie={movie} />)}
-      </Card.Group>
+      {props.movies.length < 1 ? (
+        <div>Pas de films cette semaine, revenez mercredi prochain !</div>
+      ) : (
+        <Card.Group itemsPerRow={2}>
+          {props.movies.map(movie => <Movie key={movie.id} movie={movie} />)}
+        </Card.Group>
+      )}
     </div>
   )
 }
