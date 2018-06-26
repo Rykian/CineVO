@@ -4,6 +4,7 @@
   "description": "",
   "main": "webpack.config.babel.js",
   "scripts": {
+    "install": "flow-typed install --skip",
     "test": "jest",
     "start": "babel-node dev-server.js",
     "build": "webpack --mode=production",
