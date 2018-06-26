@@ -19,8 +19,10 @@ namespace :cinevolle do
     next if Date.today.wday != 3
     movies = Movie.current_week
 
-    User.all.each do |user|
-      MainMailer.weekly(user).deliver_later
-    end if movies.count > 0
+    next if movies.count > 0
+
+    Subscriber.all.each do |subscriber|
+      DefaultMailer.weekly(subscriber, movies).deliver_now
+    end
   end
 end
