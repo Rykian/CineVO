@@ -42,7 +42,9 @@ const Screenings = ({ screenings }: ScreeningsProps) => {
             <td key={d}>
               <div className="ui list">
                 {byDays[d].map(hours => (
-                  <div key={hours} className="item center">{format(hours, 'HH:MM')}</div>
+                  <div key={hours} className="item center">
+                    {format(hours, 'HH:MM')}
+                  </div>
                 ))}
               </div>
             </td>
@@ -52,6 +54,23 @@ const Screenings = ({ screenings }: ScreeningsProps) => {
     </table>
   )
 }
+
+const Rate = (props: { who: string, rating: number }) => (
+  <React.Fragment>
+    {props.who} :{' '}
+    <Rating icon="star" maxRating="5" defaultRating={props.rating} disabled />
+  </React.Fragment>
+)
+
+const Ratings = (props: { user_ratings: ?number, press_ratings: ?number }) => (
+  <div>
+    {props.user_ratings && (
+      <Rate who="Spectateur" rating={props.user_ratings} />
+    )}
+    {props.user_ratings && props.press_ratings && ' • '}
+    {props.press_ratings && <Rate who="Presse" rating={props.press_ratings} />}
+  </div>
+)
 
 export const Movie = ({ movie }: MovieProps) => (
   <Card>
@@ -70,20 +89,7 @@ export const Movie = ({ movie }: MovieProps) => (
       </Card.Meta>
       <Card.Description>
         <Image floated="left" rounded size="small" src={movie.poster.thumb} />
-        <div>
-          Presse :{' '}
-          <Rating
-            icon="star"
-            maxRating="5"
-            defaultRating={movie.press_ratings}
-          />
-          {' '}• Spectateurs :{' '}
-          <Rating
-            icon="star"
-            maxRating="5"
-            defaultRating={movie.user_ratings}
-          />
-        </div>
+        <Ratings {...movie} />
         <p>{movie.plot}</p>
       </Card.Description>
     </Card.Content>

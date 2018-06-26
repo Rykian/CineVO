@@ -8,6 +8,6 @@ Types::MovieType = GraphQL::ObjectType.define do
   field :actors, !types[types.String]
   field :directors, !types[types.String]
   field :screenings, types[!Types::ScreeningType]
-  field :press_ratings, !types.Float
-  field :user_ratings, !types.Float
+  field :press_ratings, types.Float
+  field :user_ratings, types.Float
 end
