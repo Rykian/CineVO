@@ -1,4 +1,4 @@
 /node_modules
 /dist
 __generated__
-/.flow-typed
+/flow-typed
