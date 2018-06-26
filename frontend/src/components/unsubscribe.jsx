@@ -3,6 +3,7 @@ import React from 'react'
 import { graphql, commitMutation } from 'react-relay'
 import { Confirm } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
+import type { RouterHistory } from 'react-router'
 import environment from '../graphql'
 
 const mutation = graphql`
@@ -11,7 +12,7 @@ const mutation = graphql`
   }
 `
 
-const unsubscribe = (id: string, history: History) =>
+const unsubscribe = (id: string, history: RouterHistory) =>
   commitMutation(environment, {
     mutation,
     variables: { id },
