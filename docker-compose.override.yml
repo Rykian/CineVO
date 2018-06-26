@@ -5,14 +5,12 @@ services:
     volumes: ['./backend:/app']
     tmpfs: /app/tmp
     ports: ['3000:3000']
-    env_file: .env
     command: bash -c 'bundle install && rails s'
     environment:
       RAILS_ENV: development
 
   clockwork:
     volumes: ['./backend:/app']
-    env_file: .env
     environment:
       RAILS_ENV: development
 
@@ -26,7 +24,6 @@ services:
 
   minio:
     ports: ['9000:9000']
-    env_file: .env
     labels:
       - "traefik.admin.frontend.rule=PathPrefix:/minio"
 

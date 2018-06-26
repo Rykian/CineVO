@@ -4,15 +4,17 @@ services:
   rails:
     build: ./backend
     image: cinevo
+    env_file: .env
     labels:
       - "traefik.enable=true"
-      - "traefik.frontend.rule=PathPrefix: /graphql"
+      - "traefik.frontend.rule=Host:$BASE_HOST;PathPrefix: /graphql"
       - "traefik.port=3000"
       - "traefik.frontend.entryPoints=https,http"
 
   clockwork:
     build: ./backend
     image: cinevo
+    env_file: .env
     command: clockwork config/clock.rb
 
   postgres:
@@ -21,8 +23,9 @@ services:
   minio:
     image: minio/minio
     command: server /data
+    env_file: .env
     labels:
       - "traefik.enable=true"
-      - "traefik.uploaddir.frontend.rule=PathPrefixStrip:/uploads"
+      - "traefik.uploaddir.frontend.rule=Host:$BASE_HOST;PathPrefixStrip:/uploads"
       - "traefik.port=9000"
       - "traefik.frontend.entryPoints=https,http"

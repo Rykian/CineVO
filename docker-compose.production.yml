@@ -1,0 +1,10 @@
+version: '3.2'
+
+services:
+  node:
+    build: ./frontend
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:$BASE_HOST"
+      - "traefik.port=4000"
+      - "traefik.frontend.entryPoints=https,http"

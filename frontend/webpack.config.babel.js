@@ -1,7 +1,5 @@
 import { resolve } from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import webpack from 'webpack'
-// import resolvers from './webpack.resolve'
 
 const base = {
   mode: 'production',
