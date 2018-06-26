@@ -3,11 +3,17 @@ version: '3.2'
 services:
   rails:
     build: ./backend
+    image: cinevo
     labels:
       - "traefik.enable=true"
       - "traefik.frontend.rule=PathPrefix: /graphql"
       - "traefik.port=3000"
       - "traefik.frontend.entryPoints=https,http"
+
+  clockwork:
+    build: ./backend
+    image: cinevo
+    command: clockwork config/clock.rb
 
   postgres:
     image: postgres:10

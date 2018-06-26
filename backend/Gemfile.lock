@@ -51,6 +51,8 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    clockwork (2.0.3)
+      tzinfo
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
@@ -193,6 +195,7 @@ DEPENDENCIES
   allocine_parser!
   byebug
   carrierwave (~> 1.0)
+  clockwork
   factory_bot_rails
   fog-aws
   graphql
@@ -209,4 +212,4 @@ DEPENDENCIES
   tzinfo-data
 
 BUNDLED WITH
-   1.16.1
+   1.16.2
