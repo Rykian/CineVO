@@ -1,9 +1,8 @@
-version: '3.2'
+version: '3.6'
 
 services:
   rails:
     build: ./backend
-    image: cinevo
     env_file: .env
     labels:
       - "traefik.enable=true"
@@ -13,7 +12,6 @@ services:
 
   clockwork:
     build: ./backend
-    image: cinevo
     env_file: .env
     command: clockwork config/clock.rb
 

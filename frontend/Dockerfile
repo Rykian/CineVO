@@ -2,7 +2,8 @@ FROM node:10 as yarn
 
 WORKDIR /app
 
-ADD ./package.json ./yarn.lock ./.flowconfig /app/
+ADD package.json yarn.lock .flowconfig /app/
+ADD node_modules /app/node_modules
 RUN yarn install
 
 # Using a slim node container as a base for our final image

@@ -1,0 +1,11 @@
+version: '3.6'
+services:
+  node:
+    build: ./frontend
+    image: $CI_REGISTRY_IMAGE/frontend
+
+  rails:
+    image: $CI_REGISTRY_IMAGE/backend
+
+  clockwork:
+    image: $CI_REGISTRY_IMAGE/backend

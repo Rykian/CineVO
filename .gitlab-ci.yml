@@ -1,0 +1,27 @@
+variables:
+  COMPOSE_FILE: docker-compose.yml:docker/compose.build.yml
+
+before_script:
+  - echo $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
+
+stages:
+  - build
+
+cache:
+  key: dependencies
+  paths:
+    - backend/vendor/bundle
+    - frontend/node_modules
+    - frontend/flow-typed
+
+build:
+  stage: build
+  tags: [docker]
+  script:
+    - docker run --rm --env-file .env -v $PWD/backend:/app -w /app ruby bash -c "
+        bundle install --deployment
+        && bundle exec rails graphql:schema:dump"
+    - docker run --rm -v $PWD:/app -w /app/frontend node:10 bash -c "
+        yarn install && yarn relay"
+    - docker-compose build
+    - docker-compose push
