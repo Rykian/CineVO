@@ -7,7 +7,7 @@ services:
     env_file: .env
     labels:
       - "traefik.enable=true"
-      - "traefik.frontend.rule=Host:$BASE_HOST;PathPrefix: /graphql"
+      - "traefik.frontend.rule=Host:${BASE_HOST-localhost};PathPrefix: /graphql"
       - "traefik.port=3000"
       - "traefik.frontend.entryPoints=https,http"
 
@@ -26,6 +26,6 @@ services:
     env_file: .env
     labels:
       - "traefik.enable=true"
-      - "traefik.uploaddir.frontend.rule=Host:$BASE_HOST;PathPrefixStrip:/uploads"
+      - "traefik.uploaddir.frontend.rule=Host:${BASE_HOST-localhost};PathPrefixStrip:/uploads"
       - "traefik.port=9000"
       - "traefik.frontend.entryPoints=https,http"
