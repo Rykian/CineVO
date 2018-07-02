@@ -51,3 +51,4 @@ gem 'fog-aws'
 gem 'mini_magick'
 
 gem 'clockwork'
+gem 'minio', github: 'HeavyCookie/minio'

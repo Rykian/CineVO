@@ -1,4 +1,13 @@
 GIT
+  remote: https://github.com/HeavyCookie/minio.git
+  revision: fadc44a08c76f54c4bbfcc07dee5f47894fb136a
+  specs:
+    minio (0.1.0)
+      carrierwave
+      fog-aws
+      rails
+
+GIT
   remote: https://github.com/Rykian/allocine.git
   revision: 94debe4e724f5361f2a75a3e407f96fa0d11ada5
   specs:
@@ -202,6 +211,7 @@ DEPENDENCIES
   graphql-rails_logger
   listen (>= 3.0.5, < 3.2)
   mini_magick
+  minio!
   pg (~> 0.18)
   pry-rails
   puma (~> 3.7)

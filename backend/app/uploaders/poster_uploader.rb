@@ -1,4 +1,4 @@
-class PosterUploader < Uploader
+class PosterUploader < Minio::Uploader
   include CarrierWave::MiniMagick
 
   version :thumb do
