@@ -1,5 +1,9 @@
 version: '3.2'
 
+networks:
+  public_web:
+    external: true
+
 services:
   node:
     build: ./frontend
@@ -8,3 +12,26 @@ services:
       - "traefik.frontend.rule=Host:$BASE_HOST"
       - "traefik.port=4000"
       - "traefik.frontend.entryPoints=https,http"
+      - "traefik.docker.network=public_web"
+    restart: unless-stopped
+    networks:
+      - public_web
+
+  minio:
+    restart: unless-stopped
+    networks:
+      - public_web
+      - default
+    labels:
+      - traefik.docker.network=public_web
+
+  rails:
+    restart: unless-stopped
+    networks:
+      - public_web
+      - default
+    labels:
+      - traefik.docker.network=public_web
+
+  clockwork:
+    restart: unless-stopped
