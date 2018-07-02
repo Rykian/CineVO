@@ -24,6 +24,12 @@ services:
       - default
     labels:
       - traefik.docker.network=public_web
+    volumes:
+      - /data
+
+  postgres:
+    volumes:
+      - /var/lib/postgresql
 
   rails:
     restart: unless-stopped
