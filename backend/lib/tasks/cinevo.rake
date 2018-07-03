@@ -1,5 +1,5 @@
 require 'allocine_converter'
-namespace :cinevolle do
+namespace :cinevo do
   desc 'Update screening dates'
   task update_screenings: :environment do
     result = Allocine::ShowtimeList.search_by(theaters: ['P1140'])
@@ -16,7 +16,6 @@ namespace :cinevolle do
 
   desc 'Sending newsletter with OV sessions'
   task send_newsletter: :environment do
-    next if Date.today.wday != 3
     movies = Movie.current_week
 
     next if movies.count > 0
