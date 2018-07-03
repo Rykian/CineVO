@@ -13,7 +13,7 @@ services:
   clockwork:
     build: ./backend
     env_file: .env
-    command: clockwork config/clock.rb
+    command: bundle exec clockwork config/clock.rb
 
   postgres:
     image: postgres:10

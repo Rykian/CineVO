@@ -9,4 +9,4 @@ RUN bundle install --deployment
 
 ADD . /app/
 
-CMD rails s
+CMD bundle exec rails s
