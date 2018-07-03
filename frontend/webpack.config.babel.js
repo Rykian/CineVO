@@ -3,7 +3,9 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 const base = {
   mode: 'production',
-  plugins: [new HtmlWebpackPlugin()],
+  plugins: [
+    new HtmlWebpackPlugin({ title: 'CineVO: Séances du Cinéville Laval en VO' }),
+  ],
   output: { publicPath: '/' },
 
   entry: ['index.js'],
