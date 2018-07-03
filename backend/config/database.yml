@@ -83,5 +83,3 @@ test:
 production:
   <<: *default
   database: CineVO_production
-  username: CineVO
-  password: <%= ENV['CINEVO_DATABASE_PASSWORD'] %>
