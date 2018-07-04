@@ -10,6 +10,7 @@ services:
       RAILS_ENV: development
 
   clockwork:
+    image: "${COMPOSE_PROJECT_NAME}_rails"
     volumes: ['./backend:/app']
     environment:
       RAILS_ENV: development

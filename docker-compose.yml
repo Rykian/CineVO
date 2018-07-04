@@ -11,7 +11,6 @@ services:
       - "traefik.frontend.entryPoints=https,http"
 
   clockwork:
-    image: rails
     env_file: .env
     command: bundle exec clockwork config/clock.rb
 
