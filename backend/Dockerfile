@@ -3,9 +3,8 @@ WORKDIR /app
 EXPOSE 3000
 
 ADD Gemfile Gemfile.lock /app/
-ADD vendor /app/vendor
 
-RUN bundle install --deployment
+RUN bundle install
 
 ADD . /app/
 
