@@ -62,6 +62,9 @@ GEM
       mime-types (>= 1.16)
     clockwork (2.0.3)
       tzinfo
+    clockwork-test (0.3.0)
+      clockwork
+      timecop
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
@@ -191,6 +194,7 @@ GEM
       sprockets (>= 3.0.0)
     thor (0.20.0)
     thread_safe (0.3.6)
+    timecop (0.9.1)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     websocket-driver (0.6.5)
@@ -205,6 +209,7 @@ DEPENDENCIES
   byebug
   carrierwave (~> 1.0)
   clockwork
+  clockwork-test
   factory_bot_rails
   fog-aws
   graphql
