@@ -12,7 +12,8 @@ Types::QueryType = GraphQL::ObjectType.define do
 
   field :movies do
     type !types[!Types::MovieType]
+    argument :week, types.Int
     description 'Display all movies in db'
-    resolve ->(_obj, _args, _ctx) { Movie.all }
+    resolve ->(_obj, args, _ctx) { Movie.week(args[:week] || 0) }
   end
 end
