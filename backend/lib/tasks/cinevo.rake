@@ -18,7 +18,7 @@ namespace :cinevo do
   task send_newsletter: :environment do
     movies = Movie.current_week
 
-    next if movies.count > 0
+    next if movies.count < 1
 
     Subscriber.all.each do |subscriber|
       DefaultMailer.weekly(subscriber, movies).deliver_now
